@@ -1,0 +1,39 @@
+CREATE DATABASE barbas;
+USE bardas;
+
+
+CREATE TABLE `barbeiros` (
+
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+
+  `nome` varchar(255) NOT NULL
+
+);
+ 
+CREATE TABLE `clientes` (
+
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+
+  `nome` varchar(255) NOT NULL,
+
+  `cpf` varchar(14) NOT NULL
+
+);
+ 
+CREATE TABLE `agenda` (
+
+  `id` int PRIMARY KEY AUTO_INCREMENT,
+
+  `data` date NOT NULL,
+
+  `hora` time NOT NULL,
+
+  `barbeiro_id` int NOT NULL,
+
+  `cliente_id` int
+
+);
+ 
+ALTER TABLE `agenda` ADD FOREIGN KEY (`cliente_id`) REFERENCES `clientes` (`id`);
+ 
+ALTER TABLE `agenda` ADD FOREIGN KEY (`barbeiro_id`) REFERENCES `barbeiros` (`id`);
